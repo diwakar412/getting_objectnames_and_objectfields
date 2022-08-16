@@ -1,0 +1,15 @@
+  Public static list<string> getObjFields(string objname)
+    {
+        list<string> objfields = new list<string>();
+        
+        Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
+        Map<String, Schema.SObjectField> fieldMap = schemaMap.get(objname).getDescribe().fields.getMap();
+        
+        for(SObjectField fieldName : fieldMap.values())
+        {
+            string name = string.valueOf(fieldName);
+            objfields.add(name);
+        }
+        
+        return objfields;        
+    }
