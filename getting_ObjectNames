@@ -1,0 +1,14 @@
+public class gettingobjectnames 
+{
+    Public static list<string> getObjList()
+    {
+        list<string> objnames = new list<string>();
+        
+        for(Schema.SObjectType o : Schema.getGlobalDescribe().values())
+        {
+            Schema.DescribeSObjectResult objResult = o.getDescribe();
+            string s = objResult.getName();
+            objnames.add(s);  
+        }
+        return objnames;
+    }
